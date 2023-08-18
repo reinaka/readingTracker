@@ -1,8 +1,10 @@
-import { rootReducer } from './rootReducer';
+import booksListReducer from './slices/booksListSlice';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+        booksList : booksListReducer,
+    },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false
     }),
