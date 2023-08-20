@@ -1,8 +1,5 @@
 .wrapper {
-    border: 1px solid pink;
     border-radius: 8px;
-    margin: 8px;
-    padding: 8px;
     display: grid;
     grid-template-columns: 70% 30%;
 }

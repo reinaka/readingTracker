@@ -1,11 +1,12 @@
-import { Button, Input, Menu, MenuItem } from "@mui/material";
+import { Input, Menu, MenuItem } from "@mui/material";
 import { useRef, useState, useCallback } from "react";
-import { bindTrigger, bindMenu } from 'material-ui-popup-state/hooks';
 import PopupState from 'material-ui-popup-state';
 import { useAppDispatch } from "../../services/hooks/reduxTypes";
 import { v4 as uuidv4 } from 'uuid';
 import { addToRead, addRead, addInProcess } from "../../services/slices/booksListSlice";
 import {READ, IN_PROCESS, TO_READ} from '../../services/constants';
+import { PopupButton } from "../customButton/popupButton";
+import { bindMenu } from "material-ui-popup-state";
 
 export const AddBookForm = () => {
     const ref = useRef<HTMLInputElement | null>(null);
@@ -34,7 +35,7 @@ export const AddBookForm = () => {
             <PopupState variant="popover">
             {(popupState) => (
                 <>
-                    <Button variant="contained" disabled={book.length === 0 ? true : false} {...bindTrigger(popupState)}>Добавить</Button>
+                    <PopupButton isDisabled={!book.length ? true : false} popupState={popupState}>Добавить</PopupButton>
                     <Menu {...bindMenu(popupState)}>
                         <MenuItem onClick={() => {popupState.close(); addBookHandler(TO_READ)}}>Прочесть</MenuItem>
                         <MenuItem onClick={() => {popupState.close(); addBookHandler(IN_PROCESS)}}>В процессе</MenuItem>

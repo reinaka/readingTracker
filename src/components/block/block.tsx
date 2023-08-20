@@ -3,11 +3,11 @@ import { IN_PROCESS, TO_READ } from "../../services/constants";
 import { selectInProcess, selectRead, selectToRead } from "../../services/selectorFunctions";
 import { useAppSelector } from "../../services/hooks/reduxTypes";
 import { BookCard } from "../bookCard/bookCard";
+import styles from './block.module.css';
 
 type TProps = {
     category: string,
     title: string
-
 }
 
 export const Block:FC<TProps> = (props) => {
@@ -24,8 +24,8 @@ export const Block:FC<TProps> = (props) => {
 
     return (
         <div>
-            <h2>{props.title}</h2>
-            <ul>
+            <h2 className={styles.title}>{props.title}</h2>
+            <ul className={styles.list}>
                 {booksArr.length > 0 &&
                 booksArr.map(item => (
                     <li key={item.id}>
