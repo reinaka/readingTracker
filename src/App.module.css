@@ -22,3 +22,27 @@
     padding-top: 60px;
     padding-bottom: 40px;
 }
+
+.customInput {
+    height: 50px;
+    width: 260px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #b3b9db;
+    background-color: transparent;
+    color: #5e6687;
+    font-family: Helvetica, sans-serif;
+    letter-spacing: 0.1em;
+}
+
+.customInput:-webkit-autofill,
+.customInput:-webkit-autofill:hover,
+.customInput:-webkit-autofill:focus,
+.customInput:-webkit-autofill:active {
+    background-color: transparent;
+}
+
+.icons {
+    fill: transparent;
+    transition: .4s ease;
+}

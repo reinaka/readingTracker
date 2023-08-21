@@ -23,7 +23,7 @@ export const Block:FC<TProps> = (props) => {
     const booksArr = useAppSelector(selectorFunction);
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             <h2 className={styles.title}>{props.title}</h2>
             <ul className={styles.list}>
                 {booksArr.length > 0 &&

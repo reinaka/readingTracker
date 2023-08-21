@@ -1,4 +1,4 @@
-import { Input, Menu, MenuItem } from "@mui/material";
+import { Menu, MenuItem } from "@mui/material";
 import { useRef, useState, useCallback } from "react";
 import PopupState from 'material-ui-popup-state';
 import { useAppDispatch } from "../../services/hooks/reduxTypes";
@@ -7,6 +7,7 @@ import { addToRead, addRead, addInProcess } from "../../services/slices/booksLis
 import {READ, IN_PROCESS, TO_READ} from '../../services/constants';
 import { PopupButton } from "../customButton/popupButton";
 import { bindMenu } from "material-ui-popup-state";
+import generalStyles from '../../App.module.css';
 
 export const AddBookForm = () => {
     const ref = useRef<HTMLInputElement | null>(null);
@@ -20,18 +21,18 @@ export const AddBookForm = () => {
     const addBookHandler = useCallback((type : string) => {
         const uuId = uuidv4();
         if(type === TO_READ) {
-            dispatch({type: addToRead, payload: {title: book, id: uuId}});
+            dispatch({type: addToRead, payload: {title: book, id: uuId, like: false}});
         } else if(type === IN_PROCESS) {
-            dispatch({type: addInProcess, payload: {title: book, id: uuId}});
+            dispatch({type: addInProcess, payload: {title: book, id: uuId, like: false}});
         } else {
-            dispatch({type: addRead, payload: {title: book, id: uuId}});
+            dispatch({type: addRead, payload: {title: book, id: uuId, like: false}});
         }
         setBook("");
     },[book, dispatch]);
 
     return (
         <form action="" method="get" onSubmit={(e) => {e.preventDefault()}}>
-            <Input id="outlined-basic" inputRef={ref} value={book} onChange={inputHandler}/>
+            <input id="outlined-basic" ref={ref} value={book} onChange={inputHandler} className={generalStyles.customInput}/>
             <PopupState variant="popover">
             {(popupState) => (
                 <>

@@ -6,20 +6,23 @@
     font-family: Helvetica, sans-serif;
 	color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin: 16px;
+    letter-spacing: 0.15em;
+    margin: 8px;
     background-color: transparent;
-    transition: .5s ease;
+    transition: .4s ease;
+    padding: 0;
 }
 
 .buttonActive {
     box-shadow: .3rem .3rem .6rem #b3b9db, 
     -.2rem -.2rem .5rem #e8eaf9, inset .2rem .2rem .5rem #b3b9db, 
     inset -.2rem -.2rem .5rem #e8eaf9;
+    background-color: #ccd2ef;
+    color: #656e92
 }
 
 .buttonInactive {
-    color: #b3b9db;
+    color: #888da7;
 }
 
 .buttonActive:hover{

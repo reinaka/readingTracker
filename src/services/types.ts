@@ -1,4 +1,5 @@
 export type TBook = {
     title : string,
-    id : string
+    id : string,
+    like : boolean
 }
