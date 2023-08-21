@@ -1,33 +1,24 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
 import { TBook } from '../types';
 
-export type TBooksListState = {
-    toRead : TBook[],
-    inProcess : TBook[],
-    read : TBook[]
-};
+export type TBooksListState = TBook[];
 
-const initialState: TBooksListState = {
-    toRead : [],
-    inProcess : [],
-    read : []
-};
+const initialState: TBooksListState = [];
 
 export const booksListSlice = createSlice({
     name: 'toRead',
     initialState,
     reducers: {
-        addToRead : (state, action: PayloadAction<TBook>) => {
-            state.toRead.push(action.payload);
+        addBook : (state, action: PayloadAction<TBook>) => {
+            state.push({...action.payload, like: false});
         },
-        addRead : (state, action: PayloadAction<TBook>) => {
-            state.read.push(action.payload);
-        },
-        addInProcess : (state, action: PayloadAction<TBook>) => {
-            state.inProcess.push(action.payload);
+        toggleLike : (state, action: PayloadAction<string>) => {
+            const selectedBook = state.filter(book => book.id === action.payload)[0];
+            selectedBook.like = selectedBook.like ? false : true;
+            state = [...current(state), current(selectedBook)];
         }
     }
 });
 
-export const { addToRead, addRead, addInProcess } = booksListSlice.actions;
+export const { addBook, toggleLike } = booksListSlice.actions;
 export default booksListSlice.reducer;

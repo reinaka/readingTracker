@@ -3,7 +3,7 @@ import { useRef, useState, useCallback } from "react";
 import PopupState from 'material-ui-popup-state';
 import { useAppDispatch } from "../../services/hooks/reduxTypes";
 import { v4 as uuidv4 } from 'uuid';
-import { addToRead, addRead, addInProcess } from "../../services/slices/booksListSlice";
+import { addBook } from "../../services/slices/booksListSlice";
 import {READ, IN_PROCESS, TO_READ} from '../../services/constants';
 import { PopupButton } from "../customButton/popupButton";
 import { bindMenu } from "material-ui-popup-state";
@@ -19,15 +19,8 @@ export const AddBookForm = () => {
     };
 
     const addBookHandler = useCallback((type : string) => {
-        const uuId = uuidv4();
-        if(type === TO_READ) {
-            dispatch({type: addToRead, payload: {title: book, id: uuId, like: false}});
-        } else if(type === IN_PROCESS) {
-            dispatch({type: addInProcess, payload: {title: book, id: uuId, like: false}});
-        } else {
-            dispatch({type: addRead, payload: {title: book, id: uuId, like: false}});
-        }
-        setBook("");
+            dispatch({type: addBook, payload: {title: book, id: uuidv4(), type: type}});
+            setBook("");
     },[book, dispatch]);
 
     return (

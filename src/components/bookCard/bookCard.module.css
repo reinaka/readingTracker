@@ -39,3 +39,8 @@
     justify-content: flex-end;
     gap: 8px;
 }
+
+.wrapper:hover svg.activeLike, .wrapper:hover svg.activeLike:hover, svg.activeLike {
+    fill: #f43965;
+}
+
