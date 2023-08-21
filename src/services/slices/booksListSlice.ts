@@ -16,9 +16,13 @@ export const booksListSlice = createSlice({
             const selectedBook = state.filter(book => book.id === action.payload)[0];
             selectedBook.like = selectedBook.like ? false : true;
             state = [...current(state), current(selectedBook)];
+        },
+        deleteBook : (state, action: PayloadAction<string>) => {
+            const newArr = state.filter(book => book.id !== action.payload);
+            return newArr;
         }
     }
 });
 
-export const { addBook, toggleLike } = booksListSlice.actions;
+export const { addBook, toggleLike, deleteBook } = booksListSlice.actions;
 export default booksListSlice.reducer;
