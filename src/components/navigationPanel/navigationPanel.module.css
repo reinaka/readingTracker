@@ -1,0 +1,31 @@
+.panelWrapper {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panelInner {
+    background-color: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.likeIcon, .libraryIcon {
+    fill: rgba(255,255,255,0.5);
+}
+
+.likeIcon:hover, .libraryIcon:hover {
+    cursor: pointer;
+}
+
+.activeLink svg{
+    fill: #fff;
+}

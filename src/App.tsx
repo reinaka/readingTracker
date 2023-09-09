@@ -1,19 +1,17 @@
 import styles from './App.module.css';
-import { AddBookForm } from './components/addBookForm/addBookForm';
-import { Block } from './components/block/block';
-import { IN_PROCESS, READ, TO_READ } from './services/constants';
+import { NavigationPanel } from './components/navigationPanel/navigationPanel';
+import { Routes, Route } from 'react-router-dom';
+import { MainPage } from './pages/mainPage/mainPage';
+import { FavoriteBooksPage } from './pages/likedBooksPage/favoriteBooksPage';
 
 function App() {
   return (
     <div className={styles.general}>
-      <div className={styles.formWrapper}>
-        <AddBookForm />
-      </div>
-      <div className={styles.layout}>
-        <Block title="Прочесть" category={TO_READ}/>
-        <Block title="В процессе" category={IN_PROCESS}/>
-        <Block title="Прочтены" category={READ}/>
-      </div>
+      <Routes>
+        <Route path="/" element={<MainPage />}/>
+        <Route path="/favorites" element={<FavoriteBooksPage />}/>
+      </Routes>
+      <NavigationPanel />
     </div>
   );
 }
