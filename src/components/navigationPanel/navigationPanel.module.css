@@ -18,11 +18,11 @@
     gap: 10px;
 }
 
-.likeIcon, .libraryIcon {
+.icon {
     fill: rgba(255,255,255,0.5);
 }
 
-.likeIcon:hover, .libraryIcon:hover {
+.icon:hover {
     cursor: pointer;
 }
 
